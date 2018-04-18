@@ -39,7 +39,7 @@ public class Dispositivos extends ActionBarActivity {
             @Override
             public void onClick(View v)
             {
-                dispositivosEmparejados(); //method that will be called
+                dispositivosEmparejados(); // Se llaman los dispostivos emparejados.
             }
         });
     }
@@ -47,7 +47,7 @@ public class Dispositivos extends ActionBarActivity {
         bluetooth = BluetoothAdapter.getDefaultAdapter();
         if(bluetooth == null)
         {
-            //Muestra un mensaje diciendo que el dispositivo no tiene un adaptador blueooth.
+            // Muestra un mensaje diciendo que el dispositivo no tiene un adaptador blueooth.
             Toast.makeText(getApplicationContext(), "Este dispositivo no tiene un adaptador bluetooth", Toast.LENGTH_LONG).show();
             // Finaliza el APK
             finish();
@@ -58,7 +58,7 @@ public class Dispositivos extends ActionBarActivity {
             { }
             else
             {
-                //Pida al usuario que active el bluetooth
+                // Pida al usuario que active el bluetooth
                 Intent turnBTon = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                 startActivityForResult(turnBTon,1);
             }
@@ -83,21 +83,21 @@ public class Dispositivos extends ActionBarActivity {
 
         final ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, lista);
         listaDispositivos.setAdapter(adapter);
-        listaDispositivos.setOnItemClickListener(miLista); //Method called when the device from the list is clicked
+        listaDispositivos.setOnItemClickListener(miLista); // Método llamado cuando se hace clic en el dispositivo de la lista
     }
     private AdapterView.OnItemClickListener miLista = new AdapterView.OnItemClickListener()
     {
         public void onItemClick (AdapterView<?> av, View v, int arg2, long arg3)
         {
-            // Get the device MAC address, the last 17 chars in the View
+            // Obtenga la dirección MAC del dispositivo, los últimos 17 caracteres en la Vista
             String info = ((TextView) v).getText().toString();
             String address = info.substring(info.length() - 17);
 
-            // Make an intent to start next activity.
+            // Intenta comenzar la siguiente actividad.
             Intent i = new Intent( Dispositivos.this, Inicio.class);
 
             //Change the activity.
-            i.putExtra(DISPOSITIVO_EXTRA, address); //this will be received at NextActivity
+            i.putExtra(DISPOSITIVO_EXTRA, address); // Esto será recibido en NextActivity
             startActivity(i);
         }
     };
