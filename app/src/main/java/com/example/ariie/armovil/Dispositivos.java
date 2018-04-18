@@ -96,7 +96,7 @@ public class Dispositivos extends ActionBarActivity {
             // Intenta comenzar la siguiente actividad.
             Intent i = new Intent( Dispositivos.this, Inicio.class);
 
-            //Change the activity.
+            // Cambia la actividad.
             i.putExtra(DISPOSITIVO_EXTRA, address); // Esto será recibido en NextActivity
             startActivity(i);
         }
